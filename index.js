@@ -30,7 +30,7 @@ const TelecomandoHandler = {
                     break;
                 case 'turn_off':
                     speechOutput= 'Spengo la tv';
-                    // LG.turnOff();
+                    LG.turnOff();
                     break;
             }
         }
