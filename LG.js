@@ -2,18 +2,18 @@ const LgTv2 = require("lgtv2");
 
 class LG {
     constructor(ip) {
+        this.subscribers = [];
+        this.ready = false;
+
         this.lg = LgTv2({
             url: `ws://${ip}:3000`
         });
 
-        lg.on('error', function (err) {
+        this.lg.on('error', err => {
             console.log(err);
         });
 
-        this.subscribers = [];
-        this.ready = false;
-
-        lg.on('connect', function () {
+        this.lg.on('connect', () => {
             this.ready = true;
             this.subscribers.map(i => i(this.lg));
             this.subscribers = [];
@@ -32,7 +32,7 @@ class LG {
     }
 
     turnOff() {
-        this.whenReady(tv => tv.request('ssap://system/turnOff', function (err, res) {tv.disconnect();}));
+        this.whenReady(tv => tv.request('ssap://system/turnOff', (err, res) => tv.disconnect()));
     }
 
     changeChannel(channelNumber) {

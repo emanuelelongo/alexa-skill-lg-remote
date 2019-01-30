@@ -14,3 +14,5 @@ class HelpHandler {
             .getResponse();
     }
 }
+
+module.exports = HelpHandler;
