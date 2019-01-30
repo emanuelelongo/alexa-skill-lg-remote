@@ -6,7 +6,7 @@ const ExitHandler = require('./ExitHandler');
 
 const skillBuilder = Alexa.SkillBuilders.standard();
 
-const lg = new LG("192.168.1.4");
+const lg = new LG(process.env.LG_TV_IP);
 
 exports.handler = skillBuilder
     .addRequestHandlers(
